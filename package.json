@@ -4,7 +4,8 @@
   "description": "Server for ESP",
   "main": "index.js",
   "scripts": {
-    "dev" : "nodemon index.js"
+    "dev" : "nodemon index.js",
+    "build" : "node index.js"
   },
   "author": "Ritesh Pramanik",
   "license": "ISC",
