@@ -37,7 +37,9 @@
 // );
 const WebSocket = require('ws');
 
-const server = new WebSocket.WebSocketServer({ port: 3000 });
+// Initialize WebSocket server on the correct port
+const port = process.env.PORT || 3000;
+const server = new WebSocket.Server({ port });
 
 server.on('connection', (ws, req) => {
     const protocol = req.headers['sec-websocket-protocol'];
@@ -53,4 +55,9 @@ server.on('connection', (ws, req) => {
     });
 });
 
-console.log('WebSocket server is running on ws://localhost:3000');
+server.on('error', (error) => {
+    console.error(`Server error: ${error}`);
+});
+
+console.log(`WebSocket server is running on port ${port}`);
+
